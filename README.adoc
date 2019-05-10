@@ -1,1 +1,17 @@
 = Implementing Microservices with MicroProfile Hands-on-Lab
+
+In this workshop you will learn about the MicroProfile programming model for developing microservice applications. 
+Although MicroProfile is currently based on Java EE technologies, the expectation is that this will evolve to using the corresponding Jakarta EE technologies.
+
+We will go through the APIs and implementations for:
+
+* Externalized Configuration
+* Fault Tolerance
+* Health Checks
+* Application Metrics
+* Security
+* Open API
+* Open Tracing
+* Client API
+
+You will learn how to run you applications in available implmentations from different vendors.
