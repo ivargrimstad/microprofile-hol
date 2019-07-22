@@ -8,6 +8,8 @@ Get familiar with MicroProfile and how to get started.
 
 == Instructions
 
+=== Create your first MicroProfile application
+
 . Navigate to link:https://start.microprofile.io/[start.microprofile.io]
 . Fill in the form with: 
  - GroupId: dukes 
@@ -17,13 +19,19 @@ Get familiar with MicroProfile and how to get started.
  - Examples for specifications: Deselect all (we will look at them later)
 . Click *DOWLOAD*
 . Unzip _hello.zip_
-. Navigate to _hello-duke_
+. Navigate to _hello_
 . Build hello-duke: *mvn clean package*
 . Run hello-duke: *java -jar target/hello.jar*
 . Navigate to link:http://localhost:8181/hello/data/hello[localhost:8181/hello/data/hello]
 . Open the project in the IDE and familiarize yourself with the code.
 . Change the greeting to something else, rebuild and restart
 
+=== Documentation
+
+. Navigate to link:http://localhost:8181/openapi[localhost:8181/openapi] to look at the OpenAPI documentation
+. Navigate to the Swagger UI that comes with OpenLiberty link:http://localhost:8181/openapi/ui[localhost:8181/openapi/ui] and try out your service there
+
 == Resources
 
 - link:https://microprofile.io/[microprofile.io]
+- link:https://microprofile.io/project/eclipse/microprofile-open-api[MicroProfile OpenAPI]
