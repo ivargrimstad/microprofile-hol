@@ -1,4 +1,6 @@
-= Part 1 - The Basics
+= Part 1
+
+Create your first MicroProfile application.
 
 == Objective
 
@@ -7,9 +9,9 @@ Get familiar with MicroProfile and how to get started.
 == Instructions
 
 . Navigate to link:https://start.microprofile.io/[start.microprofile.io]
-. Fill in the form with: +
- - GroupId: dukes +
- - ArtifactId: hello +
+. Fill in the form with: 
+ - GroupId: dukes 
+ - ArtifactId: hello 
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Open Liberty
  - Examples for specifications: Deselect all (we will look at them later)
@@ -20,4 +22,8 @@ Get familiar with MicroProfile and how to get started.
 . Run hello-duke: *java -jar target/hello.jar*
 . Navigate to link:http://localhost:8181/hello/data/hello[localhost:8181/hello/data/hello]
 . Open the project in the IDE and familiarize yourself with the code.
-. Change the greeting to something else
+. Change the greeting to something else, rebuild and restart
+
+== Resources
+
+link:https://microprofile.io/[microprofile.io]
