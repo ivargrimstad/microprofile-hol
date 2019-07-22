@@ -26,4 +26,4 @@ Get familiar with MicroProfile and how to get started.
 
 == Resources
 
-link:https://microprofile.io/[microprofile.io]
+- link:https://microprofile.io/[microprofile.io]
