@@ -22,8 +22,12 @@ Learn about the cloud native features that comes with MicroProfile.
 . Add the following configuration to _src/main/liberty/config/server.xml_ +
 `<mpMetrics authentication="false" />`
 . Navigate to link:http://localhost:8181/metrics/[localhost:8181/metrics]
-. Add application specific metrics
-
+. Add application specific metrics 
+ - Hint: Annotate the `sayHello` method with `@Metered`
+. Filter out the application specific metrics
+ - link:http://localhost:8181/metrics/application[localhost:8181/metrics/application]
+ - Hint: You must invoke the hello endpoint at least once to generate content
+. Ivoke the hello endpoint a couple of times and see how the values change
 
 == Resources
 

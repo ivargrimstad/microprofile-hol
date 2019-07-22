@@ -1,6 +1,7 @@
 package dukes.hello;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.metrics.annotation.Metered;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,6 +19,7 @@ public class HelloController {
     @ConfigProperty(name = "greeting")
     private String greeting;
 
+    @Metered
     @GET
     public String sayHello() {
         return String.format(greeting, "Duke");
