@@ -1,4 +1,32 @@
 = Part 2
 
+In this part, you will explore the different API's of MicroProfile
+
 == Objective
 
+Learn about the cloud native features that comes with MicroProfile.
+
+== Instructions
+
+=== Configuration
+
+. Use MicroProfile Config to configure the message
+
+=== Health Check
+
+. Navigate to link:http://localhost:8181/health/[localhost:8181/health]
+. Implement your own Health Check with a custom value
+
+=== Metrics
+
+. Add the following configuration to _src/main/liberty/config/server.xml_ +
+`<mpMetrics authentication="false" />`
+. Navigate to link:http://localhost:8181/metrics/[localhost:8181/metrics]
+. Add application specific metrics
+
+
+== Resources
+
+- link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
+- link:https://microprofile.io/project/eclipse/microprofile-health[MicroProfile Health]
+- link:https://microprofile.io/project/eclipse/microprofile-metrics[MicroProfile Metrics]
