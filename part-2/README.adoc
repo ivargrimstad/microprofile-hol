@@ -27,10 +27,14 @@ Learn about the cloud native features that comes with MicroProfile.
 . Filter out the application specific metrics
  - link:http://localhost:8181/metrics/application[localhost:8181/metrics/application]
  - Hint: You must invoke the hello endpoint at least once to generate content
-. Ivoke the hello endpoint a couple of times and see how the values change
+. Invoke the hello endpoint a couple of times and see how the values change
+
+=== Security
+
 
 == Resources
 
 - link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
 - link:https://microprofile.io/project/eclipse/microprofile-health[MicroProfile Health]
 - link:https://microprofile.io/project/eclipse/microprofile-metrics[MicroProfile Metrics]
+- link:

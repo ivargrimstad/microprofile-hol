@@ -1,5 +1,15 @@
 = Part 3
 
+In this part, you will learn about communicating between services.
+
 == Objective
 
+Learn
+
 == Instructions
+
+=== REST Client
+
+=== Distributed Tracing
+
+=== Fault Tolerance
