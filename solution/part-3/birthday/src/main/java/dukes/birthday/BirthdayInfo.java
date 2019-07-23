@@ -1,13 +1,13 @@
 package dukes.birthday;
 
-public class BirthdayResponse {
+public class BirthdayInfo {
 
     private String name;
     private long daysToBirthday;
     private long daysSinceBirthday;
     private long age;
 
-    public BirthdayResponse(String name, long daysToBirthday, long daysSinceBirthday, long age) {
+    public BirthdayInfo(String name, long daysToBirthday, long daysSinceBirthday, long age) {
         this.name = name;
         this.daysToBirthday = daysToBirthday;
         this.daysSinceBirthday = daysSinceBirthday;
