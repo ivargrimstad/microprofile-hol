@@ -62,6 +62,10 @@
           <groupId>io.thorntail</groupId>
           <artifactId>microprofile</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>zipkin-jaxrs</artifactId>
+        </dependency>
       </dependencies>
     </profile>
   </profiles>
