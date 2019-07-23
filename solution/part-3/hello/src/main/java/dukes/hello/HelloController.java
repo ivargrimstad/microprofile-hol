@@ -2,8 +2,10 @@ package dukes.hello;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
@@ -14,8 +16,9 @@ import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 /**
  *
  */
+@Traced(operationName = "hello")
 @Path("/hello")
-@Singleton
+@RequestScoped
 public class HelloController {
 
     @Inject

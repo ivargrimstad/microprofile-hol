@@ -1,7 +1,7 @@
 # A project defaults for use with MP-JWT auth-method that include additional role mapping
 swarm:
   zipkin:
-    name: thorntail
+    name: birthday
     url: http://localhost:9411/api/v1/spans
   http:
     port: 8282  

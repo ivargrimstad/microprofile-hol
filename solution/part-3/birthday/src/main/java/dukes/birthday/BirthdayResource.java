@@ -1,5 +1,7 @@
 package dukes.birthday;
 
+import io.opentracing.Scope;
+import io.opentracing.Tracer;
 import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -23,6 +25,9 @@ public class BirthdayResource {
     @RestClient
     private CapitalizeService capitalizeService;
 
+    @Inject
+    private Tracer tracer;
+
     @GET
     @Path("/{name}")
     @Produces(APPLICATION_JSON)
@@ -30,7 +35,12 @@ public class BirthdayResource {
 
         // 1995-05-23
         final LocalDate birthDate = parse(date, ISO_DATE);
-        BirthdayInfo info = new BirthdayInfo(capitalizeService.capitalize(name), birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
+        final String capitalName;
+
+//        try(Scope socpe = tracer.   buildSpan("call capitalize").startActive(true)) {
+            capitalName = capitalizeService.capitalize(name);
+//        }
+        BirthdayInfo info = new BirthdayInfo(capitalName, birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
 
         return Response.ok(info).build();
     }
