@@ -35,3 +35,5 @@ Get familiar with MicroProfile and how to get started.
 
 - link:https://microprofile.io/[microprofile.io]
 - link:https://microprofile.io/project/eclipse/microprofile-open-api[MicroProfile OpenAPI]
+
+Now continue to link:part-2/README.adoc[Part 2]
