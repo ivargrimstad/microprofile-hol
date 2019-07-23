@@ -25,20 +25,20 @@ private String greeting;
 greeting=Hello Duke
 ```
 
-```sh  
+```bash
 java -jar target/hello.jar
 ```
 
  - Environment Variable
 
-```sh
+```bash
 export greeting='Hi Duke'
 java -jar target/hello.jar
 ```
 
  - System Property
 
-```sh
+```bash
 java -Dgreeting='Howdy Duke' -jar target/hello.jar
 ```
 
