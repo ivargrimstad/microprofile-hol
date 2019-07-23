@@ -12,35 +12,35 @@ Learn about the cloud native features that comes with MicroProfile.
 
 . Use MicroProfile Config to configure the message +
   
-  ```java  
-    @Inject
-    @ConfigProperty(name="greeting")
-    private String greeting;
-  ```
+```java  
+@Inject
+@ConfigProperty(name="greeting")
+private String greeting;
+```
 
 . Configure the message using
  - META-INF/microprofile-config.properties +
   
-  ```properties
-    greeting=Hello Duke
-  ```
+```properties
+greeting=Hello Duke
+```
 
-  ```sh  
-    java -jar target/hello.jar
-  ```
+```sh  
+java -jar target/hello.jar
+```
 
  - Environment Variable
 
-  ```sh
-    export greeting='Hi Duke'
-    java -jar target/hello.jar
-  ```
+```sh
+export greeting='Hi Duke'
+java -jar target/hello.jar
+```
 
  - System Property
 
-  ```sh
-    java -Dgreeting='Howdy Duke' -jar target/hello.jar
-  ```
+```sh
+java -Dgreeting='Howdy Duke' -jar target/hello.jar
+```
 
 === Health Check
 
