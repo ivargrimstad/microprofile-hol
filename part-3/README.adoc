@@ -142,8 +142,15 @@ public interface CapitalizeService {
 
 === Distributed Tracing
 
+Add tracing to your services in order to be able to trace calls across services.
+
+You may use both the `@Traced` annotation and the programmatic `Tracer`.
+
 === Fault Tolerance
 
 Now let's stop the `capitalization` service. Hit the `hello service` again. You will see an ugly exception.
 
 Fix this by adding a `@Fallback` to the Rest client proxy that calls that service.
+
+=== Security (optional)
+

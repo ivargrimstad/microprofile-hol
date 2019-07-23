@@ -33,13 +33,12 @@ public class BirthdayResource {
     @Produces(APPLICATION_JSON)
     public Response getBirthdayInfo(@PathParam("name") String name, @QueryParam("date") String date) {
 
-        // 1995-05-23
         final LocalDate birthDate = parse(date, ISO_DATE);
         final String capitalName;
 
-//        try(Scope socpe = tracer.   buildSpan("call capitalize").startActive(true)) {
+        try(Scope socpe = tracer.buildSpan("call capitalize").startActive(true)) {
             capitalName = capitalizeService.capitalize(name);
-//        }
+        }
         BirthdayInfo info = new BirthdayInfo(capitalName, birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
 
         return Response.ok(info).build();

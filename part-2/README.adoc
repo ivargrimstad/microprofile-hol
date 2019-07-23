@@ -59,8 +59,6 @@ java -Dgreeting='Howdy Duke' -jar target/hello.jar
  - Hint: You must invoke the hello endpoint at least once to generate content
 . Invoke the hello endpoint a couple of times and see how the values change
 
-=== Security (optional)
-
 == Resources
 
 - link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
