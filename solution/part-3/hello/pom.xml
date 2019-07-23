@@ -172,25 +172,60 @@
             </executions>
           </plugin>
 
-          <plugin>
-            <groupId>net.wasdev.wlp.maven.plugins</groupId>
-            <artifactId>liberty-maven-plugin</artifactId>
-            <version>2.6.3</version>
-            <configuration>
-              <assemblyArtifact>
-                <groupId>io.openliberty</groupId>
-                <artifactId>openliberty-runtime</artifactId>
-                <version>RELEASE</version>
-                <type>zip</type>
-              </assemblyArtifact>
-              <serverName>hello</serverName>
-              <stripVersion>true</stripVersion>
-              <looseApplication>true</looseApplication>
-              <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>
-              <packageFile>${project.build.directory}/${project.build.finalName}.jar</packageFile>
-              <include>runnable</include>
-            </configuration>
-          </plugin>
+                    <plugin>
+                      <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                      <artifactId>liberty-maven-plugin</artifactId>
+                      <version>${openliberty.maven.version}</version>
+                      <executions>
+                        <execution>
+                          <id>package-server</id>
+                          <phase>package</phase>
+                          <goals>
+                            <goal>create-server</goal>
+                            <goal>install-apps</goal>
+                            <goal>package-server</goal>
+                          </goals>
+                          <configuration>
+                            <outputDirectory>target/wlp-package</outputDirectory>
+                          </configuration>
+                        </execution>
+                      </executions>
+                      <configuration>
+                        <assemblyArtifact>
+                          <groupId>io.openliberty</groupId>
+                          <artifactId>openliberty-runtime</artifactId>
+                          <version>${openliberty.version}</version>
+                          <type>zip</type>
+                        </assemblyArtifact>
+                        <configFile>target/classes/config/server.xml</configFile>
+                        <appArchive>${project.build.directory}/${project.artifactId}.war</appArchive>
+                        <packageFile>${project.build.directory}/${project.artifactId}.jar</packageFile>
+                        <include>runnable</include>
+                        <serverName>${project.artifactId}</serverName>
+                        <installAppPackages>project</installAppPackages>
+                        <configDirectory>${project.basedir}/src/main/liberty/server</configDirectory>
+                      </configuration>
+                    </plugin>
+
+<!--          <plugin>-->
+<!--            <groupId>net.wasdev.wlp.maven.plugins</groupId>-->
+<!--            <artifactId>liberty-maven-plugin</artifactId>-->
+<!--            <version>2.6.3</version>-->
+<!--            <configuration>-->
+<!--              <assemblyArtifact>-->
+<!--                <groupId>io.openliberty</groupId>-->
+<!--                <artifactId>openliberty-runtime</artifactId>-->
+<!--                <version>RELEASE</version>-->
+<!--                <type>zip</type>-->
+<!--              </assemblyArtifact>-->
+<!--              <serverName>hello</serverName>-->
+<!--              <stripVersion>true</stripVersion>-->
+<!--              <looseApplication>true</looseApplication>-->
+<!--              <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>-->
+<!--              <packageFile>${project.build.directory}/${project.build.finalName}.jar</packageFile>-->
+<!--              <include>runnable</include>-->
+<!--            </configuration>-->
+<!--          </plugin>-->
 
           <plugin>
             <groupId>com.googlecode.maven-download-plugin</groupId>
@@ -213,42 +248,6 @@
           </plugin>
 
         </plugins>
-<!--        <plugins>-->
-<!--          <plugin>-->
-<!--            <groupId>net.wasdev.wlp.maven.plugins</groupId>-->
-<!--            <artifactId>liberty-maven-plugin</artifactId>-->
-<!--            <version>${openliberty.maven.version}</version>-->
-<!--            <executions>-->
-<!--              <execution>-->
-<!--                <id>package-server</id>-->
-<!--                <phase>package</phase>-->
-<!--                <goals>-->
-<!--                  <goal>create-server</goal>-->
-<!--                  <goal>install-apps</goal>-->
-<!--                  <goal>package-server</goal>-->
-<!--                </goals>-->
-<!--                <configuration>-->
-<!--                  <outputDirectory>target/wlp-package</outputDirectory>-->
-<!--                </configuration>-->
-<!--              </execution>-->
-<!--            </executions>-->
-<!--            <configuration>-->
-<!--              <assemblyArtifact>-->
-<!--                <groupId>io.openliberty</groupId>-->
-<!--                <artifactId>openliberty-runtime</artifactId>-->
-<!--                <version>${openliberty.version}</version>-->
-<!--                <type>zip</type>-->
-<!--              </assemblyArtifact>-->
-<!--              <configFile>target/classes/config/server.xml</configFile>-->
-<!--              <appArchive>${project.build.directory}/${project.artifactId}.war</appArchive>-->
-<!--              <packageFile>${project.build.directory}/${project.artifactId}.jar</packageFile>-->
-<!--              <include>runnable</include>-->
-<!--              <serverName>${project.artifactId}</serverName>-->
-<!--              <installAppPackages>project</installAppPackages>-->
-<!--              <configDirectory>${project.basedir}/src/main/liberty/server</configDirectory>-->
-<!--            </configuration>-->
-<!--          </plugin>-->
-<!--        </plugins>-->
       </build>
 
       <properties>
