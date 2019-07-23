@@ -20,8 +20,8 @@ Get familiar with MicroProfile and how to get started.
 . Click *DOWLOAD*
 . Unzip _hello.zip_
 . Navigate to _hello_
-. Build hello-duke: *mvn clean package*
-. Run hello-duke: *java -jar target/hello.jar*
+. Build: *mvn clean package*
+. Run: *java -jar target/hello.jar*
 . Navigate to link:http://localhost:8181/hello/data/hello[localhost:8181/hello/data/hello]
 . Open the project in the IDE and familiarize yourself with the code.
 . Change the greeting to something else, rebuild and restart

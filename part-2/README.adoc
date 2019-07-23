@@ -56,4 +56,4 @@ Learn about the cloud native features that comes with MicroProfile.
 - link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
 - link:https://microprofile.io/project/eclipse/microprofile-health[MicroProfile Health]
 - link:https://microprofile.io/project/eclipse/microprofile-metrics[MicroProfile Metrics]
-- link:
+- link:https://microprofile.io/project/eclipse/microprofile-jwt-auth[MicroProfile JWT RBAC]

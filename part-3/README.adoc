@@ -8,6 +8,29 @@ Learn
 
 == Instructions
 
+=== Preparations
+
+. Navigate to link:https://start.microprofile.io/[start.microprofile.io]
+. Fill in the form with: 
+ - GroupId: dukes 
+ - ArtifactId: birthday 
+ - MicroProfile Version: MP 2.2
+ - MicroProfile Serer: Thorntail V2
+ - Examples for specifications: Deselect all (we will look at them later)
+. Click *DOWLOAD*
+. Unzip _birthday.zip_
+
+. Navigate to link:https://start.microprofile.io/[start.microprofile.io]
+. Fill in the form with: 
+ - GroupId: dukes 
+ - ArtifactId: capitalize 
+ - MicroProfile Version: MP 2.2
+ - MicroProfile Serer: Payara Micro
+ - Examples for specifications: Deselect all (we will look at them later)
+. Click *DOWLOAD*
+. Unzip _capitalize.zip_
+
+
 === REST Client
 
 === Distributed Tracing
