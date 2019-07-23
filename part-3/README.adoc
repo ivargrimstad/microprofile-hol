@@ -34,6 +34,20 @@ Learn
 . Build capitalize: *mvn clean package*
 . Run capitalize: *java -jar target/birthday-thorntail.jar*
 
+=== Zipkin
+
+(If you have docker installed)
+
+Start a Zipkin server to collect traces
+
+You can browse to the zipkin server UI here :
+
+link:http://localhost:9411/[http://localhost:9411/]
+
+```bash
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
 === REST services
 
 ==== Birthday Service
@@ -80,7 +94,7 @@ Build and start the service (Note the port input):
 
 ```bash
 mvn clean package
-java -Dthorntail.http.port=8282 -jar target/birthday-thorntail.jar 
+java -jar target/birthday-thorntail.jar 
 ```
 
 ==== Capitalize Service
