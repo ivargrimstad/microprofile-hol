@@ -10,6 +10,5 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("/data")
 @ApplicationScoped
-
 public class CapitalizeRestApplication extends Application {
 }
