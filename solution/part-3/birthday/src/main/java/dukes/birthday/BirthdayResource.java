@@ -13,7 +13,7 @@ import static java.time.format.DateTimeFormatter.ISO_DATE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Traced
-@Path("birthday")
+@Path("/birthday")
 public class BirthdayResource {
 
     @Inject
@@ -24,7 +24,7 @@ public class BirthdayResource {
     private CapitalizeService capitalizeService;
 
     @GET
-    @Path("{name}")
+    @Path("/{name}")
     @Produces(APPLICATION_JSON)
     public Response getBirthdayInfo(@PathParam("name") String name, @QueryParam("date") String date) {
 

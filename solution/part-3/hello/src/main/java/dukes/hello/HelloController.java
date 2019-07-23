@@ -6,8 +6,10 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 /**
  *
@@ -26,7 +28,8 @@ public class HelloController {
 
     @Metered
     @GET
-    public String sayHello() {
+    @Produces(TEXT_PLAIN)
+    public String sayHello(@QueryParam("name") @DefaultValue("noname") String name) {
 
         BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duke", "1995-05-23");
 
