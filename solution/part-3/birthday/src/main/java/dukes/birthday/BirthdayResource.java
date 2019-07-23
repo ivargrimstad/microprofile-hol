@@ -1,5 +1,7 @@
 package dukes.birthday;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -15,6 +17,10 @@ public class BirthdayResource {
     @Inject
     private BirthDayService birthDayService;
 
+    @Inject
+    @RestClient
+    private CapitalizeService capitalizeService;
+
     @GET
     @Path("{name}")
     @Produces(APPLICATION_JSON)
@@ -22,7 +28,7 @@ public class BirthdayResource {
 
         // 1995-05-23
         final LocalDate birthDate = parse(date, ISO_DATE);
-        BirthdayResponse response = new BirthdayResponse(name, birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
+        BirthdayResponse response = new BirthdayResponse(capitalizeService.capitalize(name), birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
 
         return Response.ok(response).build();
     }

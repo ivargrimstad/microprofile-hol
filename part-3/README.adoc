@@ -17,8 +17,10 @@ Learn
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Thorntail V2
  - Examples for specifications: Deselect all (we will look at them later)
-. Click *DOWLOAD*
+. Click *DOWNLOAD*
 . Unzip _birthday.zip_
+. Build birthday: *mvn clean package*
+. Run birthday: *java -jar target/birthday-thorntail.jar*
 
 . Navigate to link:https://start.microprofile.io/[start.microprofile.io]
 . Fill in the form with: 
@@ -27,8 +29,10 @@ Learn
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Payara Micro
  - Examples for specifications: Deselect all (we will look at them later)
-. Click *DOWLOAD*
+. Click *DOWNLOAD*
 . Unzip _capitalize.zip_
+. Build capitalize: *mvn clean package*
+. Run capitalize: *java -jar target/birthday-thorntail.jar*
 
 
 === REST Client
