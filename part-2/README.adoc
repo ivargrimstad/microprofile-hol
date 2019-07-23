@@ -66,3 +66,5 @@ java -Dgreeting='Howdy Duke' -jar target/hello.jar
 - link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
 - link:https://microprofile.io/project/eclipse/microprofile-health[MicroProfile Health]
 - link:https://microprofile.io/project/eclipse/microprofile-metrics[MicroProfile Metrics]
+
+Now continue to link:../part-3/README.adoc[Part 3]
