@@ -17,7 +17,7 @@ Get familiar with MicroProfile and how to get started.
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Open Liberty
  - Examples for specifications: Deselect all (we will look at them later)
-. Click *DOWLOAD*
+. Click *DOWNLOAD*
 . Unzip _hello.zip_
 . Navigate to _hello_
 . Build hello-duke: *mvn clean package*
