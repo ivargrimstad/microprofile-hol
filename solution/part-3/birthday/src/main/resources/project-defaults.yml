@@ -1,7 +1,13 @@
 # A project defaults for use with MP-JWT auth-method that include additional role mapping
 swarm:
+  zipkin:
+    name: thorntail
+    url: http://localhost:9411/api/v1/spans
+  http:
+    port: 8282  
   bind:
     address: localhost
+    
   # Example of passing in token verification information via project file
   microprofile:
     jwtauth:
