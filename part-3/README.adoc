@@ -143,3 +143,7 @@ public interface CapitalizeService {
 === Distributed Tracing
 
 === Fault Tolerance
+
+Now let's stop the `capitalization` service. Hit the `hello service` again. You will see an ugly exception.
+
+Fix this by adding a `@Fallback` to the Rest client proxy that calls that service.
