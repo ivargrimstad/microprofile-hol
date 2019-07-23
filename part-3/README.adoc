@@ -34,6 +34,78 @@ Learn
 . Build capitalize: *mvn clean package*
 . Run capitalize: *java -jar target/birthday-thorntail.jar*
 
+=== REST services
+
+==== Birthday Service
+
+Create a CDI Bean that can calculate the days until and since a birthday (given a birthday) and the age of the person?
+
+```java
+@RequestScoped
+public class BirthDayService {
+
+    private final LocalDate now = now();
+
+    public long calculateDaysToBirthday(LocalDate bd) {
+
+        final LocalDate bdThisYear = bd.withYear(now.getYear());
+
+        if (bdThisYear.isAfter(now)) {
+            return now.until(bdThisYear, DAYS);
+        } else {
+            return now.until(bdThisYear.plusYears(1), DAYS);
+        }
+    }
+
+    public long calculateDaysSinceBirthday(LocalDate bd) {
+
+        final LocalDate bdThisYear = bd.withYear(now.getYear());
+
+        if (bdThisYear.isBefore(now)) {
+            return bdThisYear.until(now, DAYS);
+        } else {
+            return bdThisYear.minusYears(1).until(now, DAYS);
+        }
+    }
+
+    public long age(LocalDate bd) {
+        return bd.until(now, YEARS);
+    }
+}
+```
+
+Next, expose a REST service that allows you can call the above as services.
+
+Build and start the service (Note the port input):
+
+```bash
+mvn clean package
+java -Dthorntail.http.port=8282 -jar target/birthday-thorntail.jar 
+```
+
+==== Capitalize Service
+
+Create a new REST Endpoint in the capitalize service that can take in a word and capitalize it:
+
+```java
+@Path("/capitalize")
+@ApplicationScoped
+public class CapitalizeController {
+
+    @GET
+    @Path("/{word}")
+    public String capitalize(@PathParam("word") String word) {
+        return word.substring(0, 1).toUpperCase() + word.substring(1);
+    }
+}
+```
+
+Build and start the service:
+
+```bash
+mvn clean package
+java -jar target/capitalize-microbundle.jar
+```
 
 === REST Client
 
