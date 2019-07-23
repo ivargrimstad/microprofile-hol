@@ -13,18 +13,6 @@ Learn
 . Navigate to link:https://start.microprofile.io/[start.microprofile.io]
 . Fill in the form with: 
  - GroupId: dukes 
- - ArtifactId: birthday 
- - MicroProfile Version: MP 2.2
- - MicroProfile Serer: Thorntail V2
- - Examples for specifications: Deselect all (we will look at them later)
-. Click *DOWNLOAD*
-. Unzip _birthday.zip_
-. Build birthday: *mvn clean package*
-. Run birthday: *java -jar target/birthday-thorntail.jar*
-
-. Navigate to link:https://start.microprofile.io/[start.microprofile.io]
-. Fill in the form with: 
- - GroupId: dukes 
  - ArtifactId: capitalize 
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Payara Micro
@@ -52,6 +40,7 @@ docker run -d -p 9411:9411 openzipkin/zipkin
 
 ==== Birthday Service
 
+*Use link:birthday[birthday] as starting point.*
 Create a CDI Bean that can calculate the days until and since a birthday (given a birthday) and the age of the person?
 
 ```java
@@ -90,7 +79,7 @@ public class BirthDayService {
 
 Next, expose a REST service that allows you can call the above as services.
 
-Build and start the service (Note the port input):
+Build and start the service:
 
 ```bash
 mvn clean package
@@ -123,7 +112,7 @@ java -jar target/capitalize-microbundle.jar
 
 === REST Client
 
-From the name service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, 
+From the link:hello[hello] service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, 
 and then return birthday information.
 
 Use MicroProfile REST client to make these client calls. Here is an example of what you need to call the capitalize service:
