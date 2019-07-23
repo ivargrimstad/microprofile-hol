@@ -17,7 +17,7 @@ Get familiar with MicroProfile and how to get started.
  - MicroProfile Version: MP 2.2
  - MicroProfile Serer: Open Liberty
  - Examples for specifications: Deselect all (we will look at them later)
-. Click *DOWLOAD*
+. Click *DOWNLOAD*
 . Unzip _hello.zip_
 . Navigate to _hello_
 . Build: *mvn clean package*
@@ -35,3 +35,5 @@ Get familiar with MicroProfile and how to get started.
 
 - link:https://microprofile.io/[microprofile.io]
 - link:https://microprofile.io/project/eclipse/microprofile-open-api[MicroProfile OpenAPI]
+
+Now continue to link:../part-2/README.adoc[Part 2]

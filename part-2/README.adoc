@@ -12,24 +12,35 @@ Learn about the cloud native features that comes with MicroProfile.
 
 . Use MicroProfile Config to configure the message +
   
-  @Inject
-  @ConfigProperty(name="greeting")
-  private String greeting;
+```java  
+@Inject
+@ConfigProperty(name="greeting")
+private String greeting;
+```
 
 . Configure the message using
  - META-INF/microprofile-config.properties +
   
-  greeting=Hello Duke
-  java -jar target/hello.jar
- 
+```properties
+greeting=Hello Duke
+```
+
+```bash
+java -jar target/hello.jar
+```
+
  - Environment Variable
 
-  export greeting='Hi Duke'
-  java -jar target/hello.jar
- 
+```bash
+export greeting='Hi Duke'
+java -jar target/hello.jar
+```
+
  - System Property
 
-  java -Dgreeting='Howdy Duke' -jar target/hello.jar
+```bash
+java -Dgreeting='Howdy Duke' -jar target/hello.jar
+```
 
 === Health Check
 
@@ -50,10 +61,14 @@ Learn about the cloud native features that comes with MicroProfile.
 
 === Security
 
-
 == Resources
 
 - link:https://microprofile.io/project/eclipse/microprofile-config[MicroProfile Config]
 - link:https://microprofile.io/project/eclipse/microprofile-health[MicroProfile Health]
 - link:https://microprofile.io/project/eclipse/microprofile-metrics[MicroProfile Metrics]
+<<<<<<< HEAD
 - link:https://microprofile.io/project/eclipse/microprofile-jwt-auth[MicroProfile JWT RBAC]
+=======
+
+Now continue to link:../part-3/README.adoc[Part 3]
+>>>>>>> 7a2e8dcf137b2c507d27209e60ada6026f78ca92
