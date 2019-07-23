@@ -15,7 +15,7 @@ We will go through the APIs and implementations for:
 * Open Tracing
 * Client API
 
-You will learn how to run you applications in available implmentations from different vendors.
+You will learn how to run you applications in available implementations from different vendors.
 
 == Structure
 The is structured as a practical workshop where you work with practical exercises alone or in pairs. 
