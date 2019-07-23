@@ -12,7 +12,7 @@ import static java.time.LocalDate.parse;
 import static java.time.format.DateTimeFormatter.ISO_DATE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Traced(operationName = "birthday")
+@Traced
 @Path("birthday")
 public class BirthdayResource {
 
