@@ -109,6 +109,23 @@ java -jar target/capitalize-microbundle.jar
 
 === REST Client
 
+From the name service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, 
+and then return birthday information.
+
+Use MicroProfile REST client to make these client calls. Here is an example of what you need to call the capitalize service:
+
+```java
+@Path("capitalize")
+@Dependent
+@RegisterRestClient
+public interface CapitalizeService {
+
+    @GET
+    @Path("{word}")
+    String capitalize(@PathParam("word") String word);
+}
+```
+
 === Distributed Tracing
 
 === Fault Tolerance
