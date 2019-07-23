@@ -30,8 +30,8 @@ public class BirthdayResource {
 
         // 1995-05-23
         final LocalDate birthDate = parse(date, ISO_DATE);
-        BirthdayInfo response = new BirthdayInfo(capitalizeService.capitalize(name), birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
+        BirthdayInfo info = new BirthdayInfo(capitalizeService.capitalize(name), birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
 
-        return Response.ok(response).build();
+        return Response.ok(info).build();
     }
 }

@@ -28,8 +28,8 @@ public class HelloController {
     @GET
     public String sayHello() {
 
-       BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duke", "1995-05-23");
-        System.out.println(dukesInfo);
+        BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duke", "1995-05-23");
+
         return String.format(greeting, dukesInfo.getName(), dukesInfo.getAge(), dukesInfo.getDaysSinceBirthday(), dukesInfo.getDaysToBirthday());
     }
 }
