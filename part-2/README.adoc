@@ -50,7 +50,11 @@ java -Dgreeting='Howdy Duke' -jar target/hello.jar
 === Metrics
 
 . Add the following configuration to _src/main/liberty/config/server.xml_ +
-`<mpMetrics authentication="false" />`
+
+```xml
+<mpMetrics authentication="false" />
+```
+
 . Navigate to link:http://localhost:8181/metrics/[localhost:8181/metrics]
 . Add application specific metrics 
  - Hint: Annotate the `sayHello` method with `@Metered`
