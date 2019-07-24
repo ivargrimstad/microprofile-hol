@@ -29,10 +29,17 @@ greeting=Hello Duke
 java -jar target/hello.jar
 ```
 
- - Environment Variable
+ - Environment Variable (Linux)
 
 ```bash
 export greeting='Hi Duke'
+java -jar target/hello.jar
+```
+
+- Environment Variable (Windows)
+
+```bash
+set greeting='Hi Duke'
 java -jar target/hello.jar
 ```
 
