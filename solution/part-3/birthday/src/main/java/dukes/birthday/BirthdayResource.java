@@ -36,7 +36,7 @@ public class BirthdayResource {
         final LocalDate birthDate = parse(date, ISO_DATE);
         final String capitalName;
 
-        try(Scope socpe = tracer.buildSpan("call capitalize").startActive(true)) {
+        try (Scope socpe = tracer.buildSpan("call capitalize").startActive(true)) {
             capitalName = capitalizeService.capitalize(name);
         }
         BirthdayInfo info = new BirthdayInfo(capitalName, birthDayService.calculateDaysToBirthday(birthDate), birthDayService.calculateDaysSinceBirthday(birthDate), birthDayService.age(birthDate));
