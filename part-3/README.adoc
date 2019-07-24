@@ -20,7 +20,7 @@ Learn
 . Click *DOWNLOAD*
 . Unzip _capitalize.zip_
 . Build capitalize: *mvn clean package*
-. Run capitalize: *java -jar target/birthday-thorntail.jar*
+. Run capitalize: *java -jar target/capitalize-microbundle.jar*
 
 === Zipkin
 
