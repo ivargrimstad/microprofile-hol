@@ -141,5 +141,11 @@ Now let's stop the `capitalization` service. Hit the `hello service` again. You 
 
 Fix this by adding a `@Fallback` to the Rest client proxy that calls that service.
 
+Next let's add a way to `@Retry` the birthday service (from hello service) when birthday is not available.
+
+Retry that service 30 time with a 1 second delay.
+
+When the server does not come back up in time, do a `@Fallback`.
+
 === Security (optional)
 
