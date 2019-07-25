@@ -233,7 +233,7 @@
 
             <properties>
                 <httpsPort>8543</httpsPort>
-                <jwt.issuer>https://agilejava.eu</jwt.issuer>
+                <jwt.issuer>https://server.example.com</jwt.issuer>
                 <httpPort>8181</httpPort>
             </properties>
         </profile>

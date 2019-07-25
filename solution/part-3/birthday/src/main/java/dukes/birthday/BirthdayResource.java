@@ -5,6 +5,7 @@ import io.opentracing.Tracer;
 import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -31,6 +32,7 @@ public class BirthdayResource {
     @GET
     @Path("/{name}")
     @Produces(APPLICATION_JSON)
+//    @RolesAllowed("protected")
     public Response getBirthdayInfo(@PathParam("name") String name, @QueryParam("date") String date) {
 
         final LocalDate birthDate = parse(date, ISO_DATE);

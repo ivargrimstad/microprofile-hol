@@ -10,13 +10,13 @@
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <version.thorntail>2.4.0.Final</version.thorntail>
+    <version.thorntail>2.5.0.Final</version.thorntail>
   </properties>
   <dependencies>
     <dependency>
       <groupId>org.eclipse.microprofile</groupId>
       <artifactId>microprofile</artifactId>
-      <version>2.2</version>
+      <version>3.0</version>
       <type>pom</type>
       <scope>provided</scope>
     </dependency>

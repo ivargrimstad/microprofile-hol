@@ -8,7 +8,7 @@
         <display-name>Secure All</display-name>
         <web-resource-collection>
             <web-resource-name>Secure REST Endpoint</web-resource-name>
-            <url-pattern>/data/protected</url-pattern>
+            <url-pattern>/birthday</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>*</role-name>

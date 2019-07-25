@@ -5,6 +5,7 @@ import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -30,6 +31,7 @@ public class HelloController {
     @Metered
     @GET
     @Produces(TEXT_PLAIN)
+//    @RolesAllowed("protected")
     public String sayHello(@QueryParam("name") @DefaultValue("noname") String name) {
 
         BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duke", "1995-05-23");
