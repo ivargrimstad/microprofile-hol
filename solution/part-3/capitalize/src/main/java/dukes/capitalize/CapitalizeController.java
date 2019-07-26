@@ -12,7 +12,7 @@ public class CapitalizeController {
 
     @GET
     @Path("/{word}")
-//    @RolesAllowed("protected")
+    @RolesAllowed("protected")
     public String capitalize(@PathParam("word") String word) {
         return word.substring(0, 1).toUpperCase() + word.substring(1);
     }

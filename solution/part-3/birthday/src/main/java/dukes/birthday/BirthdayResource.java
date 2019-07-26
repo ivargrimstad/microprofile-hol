@@ -32,7 +32,7 @@ public class BirthdayResource {
     @GET
     @Path("/{name}")
     @Produces(APPLICATION_JSON)
-//    @RolesAllowed("protected")
+    @RolesAllowed("protected")
     public Response getBirthdayInfo(@PathParam("name") String name, @QueryParam("date") String date) {
 
         final LocalDate birthDate = parse(date, ISO_DATE);
