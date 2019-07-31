@@ -31,7 +31,7 @@ public class HelloController {
     @Metered
     @GET
     @Produces(TEXT_PLAIN)
-//    @RolesAllowed("protected")
+    @RolesAllowed("protected")
     public String sayHello(@QueryParam("name") @DefaultValue("noname") String name) {
 
         BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duke", "1995-05-23");
