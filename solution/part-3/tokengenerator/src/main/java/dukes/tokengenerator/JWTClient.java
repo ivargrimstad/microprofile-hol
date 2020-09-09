@@ -42,7 +42,7 @@ public class JWTClient {
         token.setUpn("Jessie");
 
         token.setIat(System.currentTimeMillis());
-        token.setExp(System.currentTimeMillis() + 30_000_000); // 30 Seconds expiration!
+        token.setExp(System.currentTimeMillis() + 30_000_000); // 30 000 Seconds expiration (about 8 hours)!
 
         token.addAdditionalClaims("custom-value", "Jessie specific value");
 
