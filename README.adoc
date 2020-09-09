@@ -12,7 +12,6 @@ We will go through the APIs and implementations for:
 * Application Metrics
 * Security
 * Open API
-* Open Tracing
 * Client API
 
 You will learn how to run you applications in available implementations from different vendors.
@@ -33,7 +32,7 @@ link:https://netbeans.apache.org/download/nb110/nb110.html[Apache NetBeans],
 link:https://www.jetbrains.com/idea/download/#section=mac[IntelliJ IDEA])
 * Git
 
-= Exercises
+== Exercises
  * link:part-1/README.adoc[Part 1]
  * link:part-2/README.adoc[Part 2]
  * link:part-3/README.adoc[Part 3]
