@@ -10,37 +10,41 @@ Learn
 
 === Preparations
 
+==== Capitalize Service
+
 . Navigate to link:https://start.microprofile.io/[start.microprofile.io]
 . Fill in the form with: 
  - GroupId: dukes 
  - ArtifactId: capitalize 
- - MicroProfile Version: MP 2.2
+ - MicroProfile Version: MP 3.3
  - MicroProfile Serer: Payara Micro
  - Examples for specifications: Deselect all (we will look at them later)
 . Click *DOWNLOAD*
 . Unzip _capitalize.zip_
-. Build capitalize: *mvn clean package*
-. Run capitalize: *java -jar target/capitalize-microbundle.jar*
-
-=== Zipkin
-
-(If you have docker installed)
-
-Start a Zipkin server to collect traces
-
-You can browse to the zipkin server UI here :
-
-link:http://localhost:9411/[http://localhost:9411/]
-
-```bash
-docker run -d -p 9411:9411 openzipkin/zipkin
-```
-
-=== REST services
+. Build capitalize: `mvn clean package`
+. Run capitalize: `java -jar target/capitalize-microbundle.jar`
 
 ==== Birthday Service
 
-*Use link:birthday[birthday] as starting point.*
+. Install link:https://helidon.io/docs/latest/#/about/05_cli[Helidon CLI]
+. *helidon init*
+ - *2* (MP)
+ - *1* (bare)
+ - Project Name: *birthday*
+ - Project GroupId: *dukes*
+ - Project ArtifactId: *birthday*
+ - Project Version: *1.0-SNAPSHOT*
+ - Java package name: *dukes.birthday*
+ - Start developmen loop: *n*
+ - Rename project folder: `mv bare-mp birthday`
+
+Build and start the service:
+
+```bash
+cd birthday
+helidon dev
+```
+ 
 Create a CDI Bean that can calculate the days until and since a birthday (given a birthday) and the age of the person?
 
 ```java
@@ -79,13 +83,6 @@ public class BirthDayService {
 
 Next, expose a REST service that allows you can call the above as services.
 
-Build and start the service:
-
-```bash
-mvn clean package
-java -jar target/birthday-thorntail.jar 
-```
-
 ==== Capitalize Service
 
 Create a new REST Endpoint in the capitalize service that can take in a word and capitalize it:
@@ -98,7 +95,7 @@ public class CapitalizeController {
     @GET
     @Path("/{word}")
     public String capitalize(@PathParam("word") String word) {
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
     }
 }
 ```
@@ -107,13 +104,12 @@ Build and start the service:
 
 ```bash
 mvn clean package
-java -jar target/capitalize-microbundle.jar
+java -jar target/capitalize-microbundle.jar --port 8070
 ```
 
 === REST Client
 
-From the link:hello[hello] service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, 
-and then return birthday information.
+From the greeting service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, and then return birthday information.
 
 Use MicroProfile REST client to make these client calls. Here is an example of what you need to call the capitalize service:
 
@@ -128,6 +124,15 @@ public interface CapitalizeService {
     String capitalize(@PathParam("word") String word);
 }
 ```
+
+*TIP:* Remember to configure the REST client. Here is an example for the client to the capitalize service.
+
+birthday/src/main/resources/META-INF/microprofile-config.properties
+
+```
+dukes.birthday.CapitalizeService/mp-rest/url=http://localhost:8070
+```
+
 === Fault Tolerance
 
 Now let's stop the `capitalization` service. Hit the `hello service` again. You will see an ugly exception.
