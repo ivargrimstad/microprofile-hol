@@ -147,6 +147,13 @@ When the server does not come back up in time, do a `@Fallback`.
 
 === Security (optional)
 
+Add security to the `greeting` service. Only allow users with the role `protected` to be able to access the endpoint.
+
+==== Configuration
+
+Add the public key to the Liberty configuration.
+
+Copy link:../solution/greeting/src/main/liberty/config/resources/security/public.jks[public.jks] to the `src/main/liberty/config/resources/serurity` folder
 
 
 == Resources
