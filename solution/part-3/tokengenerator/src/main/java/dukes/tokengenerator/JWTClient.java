@@ -1,16 +1,15 @@
 package dukes.tokengenerator;
 
-import com.nimbusds.jose.*;
-import com.nimbusds.jose.crypto.RSASSASigner;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.openssl.PEMKeyPair;
-import org.bouncycastle.openssl.PEMParser;
-import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.auth.PubSecKeyOptions;
+import io.vertx.ext.auth.jwt.JWTAuth;
+import io.vertx.ext.auth.jwt.JWTAuthOptions;
+import io.vertx.ext.jwt.JWTOptions;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.security.KeyPair;
+import java.nio.charset.StandardCharsets;
 import java.security.PrivateKey;
 import java.util.Arrays;
 import java.util.UUID;
@@ -22,16 +21,17 @@ public class JWTClient {
 
     public static void main(String[] args) throws IOException {
 
-        PrivateKey key = readPrivateKey();
+        String key = readPemFile();
         String jwt = generateJWT(key);
         System.out.println(jwt);
     }
 
-    private static String generateJWT(PrivateKey key) {
-        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256)
-                .type(JOSEObjectType.JWT)
-                .keyID("theKeyId")
-                .build();
+    private static String generateJWT(String key) {
+        JWTAuth provider = JWTAuth.create(null, new JWTAuthOptions()
+                .addPubSecKey(new PubSecKeyOptions()
+                        .setAlgorithm("RS256")
+                        .setSecretKey(key)
+                ));
 
         MPJWTToken token = new MPJWTToken();
         token.setAud("targetService");
@@ -42,35 +42,33 @@ public class JWTClient {
         token.setUpn("Jessie");
 
         token.setIat(System.currentTimeMillis());
-        token.setExp(System.currentTimeMillis() + 30_000_000); // 30 000 Seconds expiration (about 8 hours)!
+        token.setExp(System.currentTimeMillis() + 1_800_000); // 30 Minutes expiration!
 
         token.addAdditionalClaims("custom-value", "Jessie specific value");
 
         token.setGroups(Arrays.asList("user", "protected"));
 
-        JWSObject jwsObject = new JWSObject(header, new Payload(token.toJSONString()));
-
-        // Apply the Signing protection
-        JWSSigner signer = new RSASSASigner(key);
-
-        try {
-            jwsObject.sign(signer);
-        } catch (JOSEException e) {
-            e.printStackTrace();
-        }
-
-        return jwsObject.serialize();
+        return provider.generateToken(new JsonObject().mergeIn(token.toJSONString()), new JWTOptions().setAlgorithm("RS256"));
     }
 
-    public static PrivateKey readPrivateKey() throws IOException {
-
-        InputStream inputStream = JWTClient.class.getResourceAsStream("/privateKey.pem");
-
-        PEMParser pemParser = new PEMParser(new InputStreamReader(inputStream));
-        JcaPEMKeyConverter converter = new JcaPEMKeyConverter().setProvider(new BouncyCastleProvider());
-        Object object = pemParser.readObject();
-        KeyPair kp = converter.getKeyPair((PEMKeyPair) object);
-        return kp.getPrivate();
+    // NOTE:   Expected format is PKCS#8 (BEGIN PRIVATE KEY) NOT PKCS#1 (BEGIN RSA PRIVATE KEY)
+    // See gencerts.sh
+    private static String readPemFile() {
+        StringBuilder sb = new StringBuilder(8192);
+        try (BufferedReader is = new BufferedReader(
+                new InputStreamReader(
+                        JWTClient.class.getResourceAsStream("/privateKey.pem"), StandardCharsets.US_ASCII))) {
+            String line;
+            while ((line = is.readLine()) != null) {
+                if (!line.startsWith("-")) {
+                    sb.append(line);
+                    sb.append('\n');
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 
 }
