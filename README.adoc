@@ -33,6 +33,9 @@ link:https://www.jetbrains.com/idea/download/#section=mac[IntelliJ IDEA])
 * Git
 
 == Exercises
+
+image::architecture.png[Architecture]
+
  * link:part-1/README.adoc[Part 1]
  * link:part-2/README.adoc[Part 2]
  * link:part-3/README.adoc[Part 3]
