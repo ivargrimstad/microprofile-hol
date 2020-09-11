@@ -153,7 +153,7 @@ Add security to the `greeting` service. Only allow users with the role `protecte
 
 Add the public key to the Liberty configuration.
 
-Copy link:../solution/greeting/src/main/liberty/config/resources/security/public.jks[public.jks] to the `src/main/liberty/config/resources/serurity` folder
+Copy link:https://github.com/ivargrimstad/microprofile-hol/raw/master/solution/greeting/src/main/liberty/config/resources/security/public.jks[public.jks] to the `src/main/liberty/config/resources/serurity` folder
 
 
 == Resources
