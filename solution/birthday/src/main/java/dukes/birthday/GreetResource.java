@@ -1,10 +1,7 @@
 
 package dukes.birthday;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonBuilderFactory;
@@ -34,10 +31,6 @@ public class GreetResource {
 
     @Inject
     private BirthdayService birthDayService;
-
-//    @Inject
-//    @RestClient
-//    private CapitalizeService capitalizeService;
 
     /**
      * Return a worldly greeting message.
