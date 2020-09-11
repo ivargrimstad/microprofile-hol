@@ -1,6 +1,7 @@
 
 package dukes.birthday;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.annotation.security.RolesAllowed;
@@ -9,7 +10,10 @@ import javax.json.Json;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.time.LocalDate;
 import java.util.Collections;
 
@@ -31,9 +35,9 @@ public class GreetResource {
     @Inject
     private BirthdayService birthDayService;
 
-    @Inject
-    @RestClient
-    private CapitalizeService capitalizeService;
+//    @Inject
+//    @RestClient
+//    private CapitalizeService capitalizeService;
 
     /**
      * Return a worldly greeting message.
@@ -43,11 +47,14 @@ public class GreetResource {
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject getDefaultMessage(@PathParam("name") String name, @QueryParam("date") String date) {
+    public JsonObject getDefaultMessage(@PathParam("name") String name, @QueryParam("date") String date, @HeaderParam("Authorization") String authHeader) {
+
+        WebTarget target = ClientBuilder.newClient().target("http://localhost:8070/capitalize/" + name);
+        Response response = target.request().header("Authorization", authHeader).buildGet().invoke();
 
         final LocalDate birthDate = parse(date, ISO_DATE);
         return JSON.createObjectBuilder()
-                .add("name", capitalizeService.capitalize(name))
+                .add("name", response.readEntity(String.class))
                 .add("daysToBirthday", birthDayService.calculateDaysToBirthday(birthDate))
                 .add("daysSinceBirthday", birthDayService.calculateDaysSinceBirthday(birthDate))
                 .add("age", birthDayService.age(birthDate))
