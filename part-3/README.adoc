@@ -148,6 +148,7 @@ When the server does not come back up in time, do a `@Fallback`.
 === Security (optional)
 
 
+
 == Resources
 
 - link:https://microprofile.io/project/eclipse/microprofile-fault-tolerance[MiroProfile Fault Tolerance]
