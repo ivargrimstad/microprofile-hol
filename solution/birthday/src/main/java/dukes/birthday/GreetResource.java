@@ -46,7 +46,6 @@ public class GreetResource {
     public JsonObject getDefaultMessage(@PathParam("name") String name, @QueryParam("date") String date) {
 
         final LocalDate birthDate = parse(date, ISO_DATE);
-
         return JSON.createObjectBuilder()
                 .add("name", capitalizeService.capitalize(name))
                 .add("daysToBirthday", birthDayService.calculateDaysToBirthday(birthDate))

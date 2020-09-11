@@ -1,4 +1,4 @@
-package dukes.hello;
+package dukes.greeting;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Singleton;
@@ -31,9 +31,8 @@ public class HelloController {
 
 
     @GET
-//    @RolesAllowed("protected")
+    @RolesAllowed("protected")
     public String sayHello() {
-
         BirthdayInfo dukesInfo = birthdayService.getBirthdayInfo("duKe", "1995-05-23");
         return String.format(greeting, dukesInfo.getName(), dukesInfo.getAge(), dukesInfo.getDaysSinceBirthday(), dukesInfo.getDaysToBirthday());
     }

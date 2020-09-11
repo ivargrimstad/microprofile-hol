@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>dukes</groupId>
-  <artifactId>hello</artifactId>
+  <artifactId>greeting</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
@@ -12,7 +12,7 @@
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>11</maven.compiler.source>
     <openliberty.version>[19.0.0.9,)</openliberty.version>
-    <final.name>hello</final.name>
+    <final.name>greeting</final.name>
   </properties>
   <dependencies>
     <dependency>
@@ -24,7 +24,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>hello</finalName>
+    <finalName>greeting</finalName>
   </build>
   <profiles>
     <profile>

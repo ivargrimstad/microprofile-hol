@@ -1,4 +1,4 @@
-package dukes.hello;
+package dukes.greeting;
 
 public class BirthdayInfo {
 

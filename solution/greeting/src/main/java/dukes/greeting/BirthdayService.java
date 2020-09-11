@@ -1,4 +1,4 @@
-package dukes.hello;
+package dukes.greeting;
 
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;

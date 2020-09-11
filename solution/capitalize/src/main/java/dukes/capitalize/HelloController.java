@@ -1,6 +1,5 @@
 package dukes.capitalize;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
