@@ -111,50 +111,76 @@ java -jar target/capitalize-microbundle.jar --port 8070
 
 From the greeting service, make a call to the birthday service, that in turn should call the capitalize service to capitalize the name, and then return birthday information.
 
-Use MicroProfile REST client to make these client calls. Here is an example of what you need to call the capitalize service:
+Use MicroProfile REST client to make the client call to birthday service from the greeting service. Here is an example of what you need to call the capitalize service:
 
 ```java
-@Path("capitalize")
+@Path("birthday")
 @Dependent
 @RegisterRestClient
-public interface CapitalizeService {
-
+public interface BirthdayService {
+ 
     @GET
-    @Path("{word}")
-    String capitalize(@PathParam("word") String word);
-}
+    @Path("{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    BirthdayInfo getBirthdayInfo(@PathParam("name") String name, @QueryParam("date") String date);
+
+    default BirthdayInfo simpleInfo(String name, String date) {
+        return new BirthdayInfo(name, -1, -1, -1);
+    }
+}```
+
+*TIP:* Remember to configure the REST client. Here is an example for the client to the birthday service.
+
+greeting/src/main/resources/META-INF/microprofile-config.properties
+
 ```
-
-*TIP:* Remember to configure the REST client. Here is an example for the client to the capitalize service.
-
-birthday/src/main/resources/META-INF/microprofile-config.properties
-
-```
-dukes.birthday.CapitalizeService/mp-rest/url=http://localhost:8070
+dukes.greeting.BirthdayService/mp-rest/url=http://localhost:8080
 ```
 
 === Fault Tolerance
 
-Now let's stop the `capitalization` service. Hit the `hello service` again. You will see an ugly exception.
+Now let's stop the `birthday` service. Hit the `greeting service` again. You will see an ugly exception.
 
 Fix this by adding a `@Fallback` to the Rest client proxy that calls that service.
 
-Next let's add a way to `@Retry` the birthday service (from hello service) when birthday is not available.
+Next let's add a way to `@Retry` the birthday service (from greeting service) when birthday is not available.
 
-Retry that service 30 time with a 1 second delay.
+Retry that service 15 times with a 1 second delay.
 
 When the server does not come back up in time, do a `@Fallback`.
 
 === Security (optional)
 
-Add security to the `greeting` service. Only allow users with the role `protected` to be able to access the endpoint.
+. Add security to the `greeting` service. Only allow users with the role `protected` to be able to access the endpoint.
 
-==== Configuration
+==== Configure Birthday
 
 Add the public key to the Liberty configuration.
 
 Copy link:https://github.com/ivargrimstad/microprofile-hol/raw/master/solution/greeting/src/main/liberty/config/resources/security/public.jks[public.jks] to the `src/main/liberty/config/resources/security` folder of the `greeting` service (you may need to create the folder structure).
 
+=== Propagate JWT 
+
+Add security to the `capitalize` service. Only allow users with the role `protected` to be able to access the endpoint.
+
+==== Configure Capitalize
+
+Copy link:https://github.com/ivargrimstad/microprofile-hol/blob/master/solution/capitalize/src/main/resources/publicKey.pem[publicKey.pem] to the `src/main/resources` folder of the `capitalize` service.
+
+==== Configure Greeting
+
+`microprofile-config.properties`
+```
+org.eclipse.microprofile.rest.client.propagateHeaders=Authorization
+```
+
+In the Birthday service, configure the JAX-RS client to grab the `Authorization` header and send it in the call to Capitalize.
+
+```
+@HeaderParam("Authorization") String authHeader
+
+target.request().header("Authorization", authHeader).buildGet().invoke();
+```
 
 == Resources
 
