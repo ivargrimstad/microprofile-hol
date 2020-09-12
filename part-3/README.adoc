@@ -127,7 +127,8 @@ public interface BirthdayService {
     default BirthdayInfo simpleInfo(String name, String date) {
         return new BirthdayInfo(name, -1, -1, -1);
     }
-}```
+}
+```
 
 *TIP:* Remember to configure the REST client. Here is an example for the client to the birthday service.
 
@@ -170,6 +171,7 @@ Copy link:https://github.com/ivargrimstad/microprofile-hol/blob/master/solution/
 ==== Configure Greeting
 
 `microprofile-config.properties`
+
 ```
 org.eclipse.microprofile.rest.client.propagateHeaders=Authorization
 ```
@@ -181,6 +183,8 @@ In the Birthday service, configure the JAX-RS client to grab the `Authorization`
 
 target.request().header("Authorization", authHeader).buildGet().invoke();
 ```
+
+Use the link:https://github.com/ivargrimstad/microprofile-hol/tree/master/solution/tokengenerator[Token Generator] to generate a JWT token.
 
 == Resources
 
